@@ -1,0 +1,168 @@
+bluetooth protocol stack
+
+	bluetooth classic protocol stack
+		1. Application layer
+
+			기기의 동작을 개발자가 제어 하는 계층
+			개발자가 작성한 코드
+
+		2. Host layer
+
+			Controller layer인 bluetooth module과 연결되어 
+			module을 제어하고 어플리케이션을 수행한다.
+
+			1) OBEX
+
+				기기간 이진 객체 교환을 용이하게 하는 통신 프로토콜
+
+			2) SDP
+
+				장치에서 서로 지원하는 서비스와 연결에 사용할 매개 변수를 검색할수 있도록 해줌
+
+			3) TCS
+
+				블루투스 장치간의 음성 및 데이터 통화를 설정하고 제어하는데 사용
+
+			4) RFCOMM
+
+				에뮬레이트된 rs-232 직렬포트를 제공하는 단순 전송 프로토콜
+
+			5) BNEP
+
+				L2CAP에 네트워크 패킷을 전달한다
+
+
+			6) L2CAP
+
+				데이터를 어떤 규칙으로 전송할 것인가에 대한 규약
+
+				패킷을 HCI로 전달하거나 호스트가없는 시스템에서는 링크 관리자 / ACL 링크로 직접 전달함
+
+		3. HCI(Host Controller InterFace)
+
+			Host 계층과 Controller 계층 사이의 통신을 위해 SIG에서 규정한 표준 인터페이스
+
+		4. Controller layer
+
+			물리적인 부분과, 물리적 요소를 제어하는 저레벨의 소프트웨어
+
+			1) LMP(Link manager protocol)
+
+				두 장치 사이의 무선 링크 제어, 장치 능력 조회 및 전원 제어에 사용됩니다.
+
+			2)baseband prosecer
+
+				2개이상의 장치간의 물리적 연결및 링크 관리
+
+
+	BLE protocol stack
+		1. Application layer
+
+			기기의 동작을 개발자가 제어 하는 계층
+			개발자가 작성한 코드
+
+		2. Host layer
+
+			Controller layer인 bluetooth module과 연결되어 
+			module을 제어하고 어플리케이션을 수행한다.
+
+			1) SMP(Security Manager Protocol)
+
+				두 장치간에 암호화 통신을 할 때 필요한 key를 생성 및 교환 할수 있도록 보안 알고리즘을 제공한다.
+				- Pairing : 연결을 활성화 하기위해 두 장치간 임시로 사용할 보안키를 생성하고 나눈다. 
+					따로 지정하지 않을시 연결할때마다 새로운 키가 생성된다.
+
+				- Bonding : Pairing후 현재 사용중인 키를 저장해서 다음에 다시 연결할 때 키를 재사용하게 설정하는 단계
+
+				-Encryption Re-establishment : Bonding후 공유키가 두장치에 저장된다 재연결했을때 저장된 키를 공유해 
+					Pairing, Bonding과정을 생략하고 연결되도록 한다.
+
+			2) GAP(Generic Access Profile)
+
+				서로 다른 제조사에서 개발한 BLE끼리 서로 통신할수있게 하는 역활
+
+				Role : BLE가 어떤 역할인가
+
+					Broadcaster = Advertiser
+
+					Observer = Scanner
+
+					Central = Master
+
+					Peripheral = Slave
+
+				Mode : BLE장치가 맡은 Role을 수행하기 위해 어떤 상태가 되야 하는가
+
+				Procedure : BLE 장치가 맡은 Role 수행하기 위해 해야 할 작업의 List
+
+				Security : SMP가 데이터를 암호화하여 주고받는 과정에서 특성들을 설정
+
+				Additional Gap Data Format : Model, Procedure의 data format을 정의
+
+
+			3) GATT(Generic Attribute Profile)
+
+				서로 다른 역할을 하는 BLE 장치들이 연결되었더라도 데이터를 주고받는 방식에 있어서는 동일한 방법을 따르도록 data format과 procedure를 정형화 했다.
+				자주 쓰이는 장치의 기능과 데이터를 블루투스 개발 시에 미리 정의해 두었으며 이를 Profile이라 부른다. 
+
+				Data를 처리 할때 각각의 디바이스를 두가지 상태로 구분한다.
+
+				- GATT Client : GATT Server에 데이터를 주고 받기위해 request한다.
+					처음 연결시 Server에대한 탐색 과정이 있다.(Service Discovery)
+
+				- GATT Server : request를 받으면 그에 상응하는 response를 돌려보낸다.
+					Client를 위해 User Data를 생성하고 저장한다.
+
+			4) ATT(Attribute)
+
+				GATT에서 정의한 Service와 기타 속성을 data로 저장할때 어떻게 표현할 것인지에 대한 규칙
+				GATT Client가 Service Discovery를 할 때 가져오는 정보가 ATT 리스트이다.
+
+				Handle : 모든 ATT항목은 고정된 Handle값을 가진다.
+					GATT Client가 특정 Service에 접근할 때 Handle값을 사용하여 접근한다.
+
+				Type : BLE 디바이스가 제공하는 Service를 타입별로 나누어 ID값을 매긴 것이다.
+
+				Permission : 해당 ATT 항목의 접근 권한
+
+				Value : 512bytes의 실제 주고받을 데이터가 저장된다.
+
+			5) L2CAP(Logical Link Control and Adaptation Protocol)
+
+				데이터를 어떤 규칙으로 전송할 것인가에 대한 규약
+
+				패킷을 HCI로 전달하거나 호스트가없는 시스템에서는 링크 관리자 / ACL 링크로 직접 전달함
+
+		3. HCI(Host Controller InterFace)
+
+			Host 계층과 Controller 계층 사이의 통신을 위해 SIG에서 규정한 표준 인터페이스
+
+		4. Controller layer
+
+			물리적인 부분과, 물리적 요소를 제어하는 저레벨의 소프트웨어
+
+			1) LL(Linked Layer)
+			
+				PHY와 상호 작용하면서 블루투스 연결을 관리하는 하드웨어/소프트웨어 Layer
+				연결시에 미리 정해진 장치만 연결될 수 있도록 White list를 관리
+				암호화 통신시에 데이터의 암/복호화를 담당하기함
+
+				-Role 
+					master : 연결을 시도하고 연결후에 전체 connection관리
+					slave : master의 연결요청을 받아들이고 연결의 대상
+					Advertiser : Advertise Packet을 보내는 역할
+					Scanner : Advertiser를 Scanning하는 역활
+
+				- State
+					Standby : Signal Packet을 보내지도, 받지도 않는 대기상태
+					advertising : Advertise Packet을 보내거나, 상대기기와 Request,Response를 받을수있는 상태
+					scanning : Adverting Channel를 Scanning하는 역활
+					initiating : Advertiser의 Connectable Advertising Packet을 받고난 후 Connection Request를 보내는 상태
+					connection : connection이후의 상태
+
+
+			2) PHY(Physical Layer)
+
+				아날로그 신호로 통신하며, 디지털-아날로그 신호를 변환하는 역활
+				2MHz 단위로 나누어 도합 40개의 채널을 운용한다
+				이중 37,38,39 채널은 기기간의 상호 인지를 위한 Advertising 채널로 사용한다.

@@ -1,0 +1,20 @@
+bluetooth 4.0 + LE
+
+	데이터 전송 속도 : 24Mbps
+	protocol stack 변경 
+	128비트 암호화
+	단일 모드에선 저에너지 프로토콜 스택만 구현
+	듀얼 모드에서 BLE의 모든 기능이 bluetooth classic으로 통합
+	범위 : 60m
+
+bluetooth 4.1
+
+	데이터 전송 개선(24Mbps -> 25Mbps)
+	연결 가능한 거리를 벗어났다가 다시 연결 가능 범위에 들어오면 자동으로 재연결
+	bluetooth기기가 다른 장치와의 허브 역할도 가능
+	ipv6 사용 표준 사용
+
+bluetooth 4.2
+
+	개인정보 강화
+		- 사용자의 허락없이 bluetooth 기기의 위치를 추적할수 없어짐

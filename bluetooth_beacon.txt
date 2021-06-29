@@ -1,0 +1,39 @@
+ble beacon
+
+	advertise mode를 이용한 통신방법
+
+	beacon은 advertising packet을 지속적으로 전송
+
+	Central에서 beacon data를 읽고(Scan) 읽은 값에 해당하는 서비스를 수행한다.
+
+	특징
+
+		Pairing/ Bonding 절차가 삭제 되어 전력 손실이 감소된다.
+
+		자신의 출력 범위 안에서 Advertising packet을 통해 자신의 위치 및 존재를 알린다.
+
+		Adverttising Prefix 형식을 따르지 않고 Beacon 인식을 위한 Prefix 데이터를 갖는다.
+
+	종류 
+		ibeacon : 최초로 출시된 ble beacon
+
+		AltBeacon : 개방형 사양의 무료 비콘 디자인 
+
+		URIBeacon : 구글, 전체 인터넷이 데이터베이스
+
+		https://os.mbed.com/blog/entry/BLE-Beacons-URIBeacon-AltBeacons-iBeacon/
+
+	용도 
+		실내 내비게이션
+
+		알림 및 상호작용
+
+			방당 많은 비콘 : 사용자 위치 추정 
+
+			방당 하나의 비콘 : 최적의 경로 찾기
+
+			건물당 몇개의 비콘 : 체크포인트
+
+		건강 관리
+
+		추적기

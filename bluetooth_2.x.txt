@@ -1,0 +1,10 @@
+bluetooth 2.0 + EDR
+	데이터 전송 속도 : 3Mbps(실제 전송 속도 - 2.1Mbps)
+	에너지 소모량 감소
+	NFC로 bluetooth 연결 가능
+	bluetooth 1.1과 호환
+	범위 : 30m
+
+bluetooth 2.1 + EDR
+	bluetooth 1.2과 호환
+	SSP(Secure Simple Pairing)기술 사용

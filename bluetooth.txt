@@ -1,0 +1,51 @@
+Version 
+	- Bluetooth Classic
+	
+		bluetooth 1.0
+		
+			bluetooth 1.0a
+
+		 	bluetooth 1.0b
+
+			bluetooth 1.1
+
+			bluetooth 1.2
+
+		bluetooth 2.0 + EDR
+
+			bluetooth 2.1 + EDR
+
+		bluetooth 3.0 + HS
+
+	- Bluetooth Low Energy(BLE)
+
+		bluetooth 4.0 + LE
+
+			bluetooth 4.1
+
+			bluetooth 4.2
+
+		bluetooth 5
+		
+			bluetooth 5.1
+
+			bluetooth 5.2
+
+Profile - 프로토콜의 사용법
+
+	a2dp
+	bip
+	bpp
+	fax
+	ftp
+	hdp
+	hsp
+	lap
+	map
+
+Class - 전파의 강도
+
+	Class | 	최대 전력 	 | 작동범위
+	  1   |   100mW (20dBm)  | 100 미터
+	  2   |   2.5mW (4dBm )  |  10 미터
+	  3   |     1mW (0dBm )  |   1 미터
